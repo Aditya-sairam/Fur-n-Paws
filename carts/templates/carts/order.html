@@ -1,0 +1,41 @@
+
+{% include 'blog/base.html' %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	{% if empty %}
+	<h1>{{ empty_message }}</h1>
+	{% else %}
+	<div class="col-sm-8 col-sm-offset-2">
+	<table class="table">
+		<thead>
+			<th>Items</th>
+			<th>₹ Price</th>
+			<th>Qty</th>
+		</thead>
+
+		<tfoot>
+			<tr>
+				<td></td>
+				<td>Total: ₹ {{ cart.total }}</td>
+			</tr>
+		</tfoot>
+		{% for item in cart.cartitem_set.all %}
+		<tr>
+			<td>{{ item.product }}</td>
+			<td>{{ item.product.price }}</td>
+			<td>{{ item.quantity }}</td>
+		</tr>
+		{% endfor %}
+	</table>
+</div>
+<div class="container">
+	<h3>{{ obj.Mobile_No }}</h3>
+	<h3>{{ obj.Shipping_Adress }}</h3>
+	<h3>{{ obj.Type_Of_Payment }}</h3>
+
+</body>
+</html>
