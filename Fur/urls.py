@@ -24,7 +24,7 @@ from multiple import views as multiple_views
 #cart
 from django.urls import re_path
 from django.conf.urls import url 
-
+from orders import views as order_view
 from carts import views as cart_view
 
 
@@ -44,8 +44,9 @@ urlpatterns = [
     path('cart/',cart_view.View,name='cart'),
     #url('cart/(?P<id>[\d+]+)/$',cart_view.remove_from_cart,name='remove_cart'),
     url('cart/(?P<slug>[\w-]+)/$',cart_view.update_cart,name='update_cart'),
-    path('checkout/',cart_view.CheckOut_View,name='checkout'),
-    path('order/',cart_view.OrderSummary,name='order_summary')
+    path('checkout/',order_view.checkout,name='checkout'),
+     path('orders/',order_view.Orders,name='Orders'),
+    #path('order/',cart_view.OrderSummary,name='order_summary')
 
 
 

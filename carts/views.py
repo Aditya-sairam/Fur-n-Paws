@@ -2,9 +2,9 @@ from django.shortcuts import render,HttpResponseRedirect
 from django.urls import reverse 
 from .models import Cart,CartItem
 from blog.models import BlogPost 
-from .forms import CheckOutForm
+#from .forms import CheckOutForm
 from django.shortcuts import render,get_object_or_404,redirect
-from .models import CheckOut
+#from .models import CheckOut
 
 # Create your views here.
 
@@ -98,8 +98,8 @@ def update_cart(request,slug):
 	return HttpResponseRedirect(reverse("cart")) 
 
 
-def CheckOut_View(request):
-	template_name = "carts/checkout.html"
+'''def CheckOut_View(request):
+	template_name = "carts/order.html"
 	form = CheckOutForm(request.POST or None)
 	if form.is_valid():
 		form.save()
@@ -110,20 +110,26 @@ def CheckOut_View(request):
 
 def OrderSummary(request):
 	obj = get_object_or_404(CheckOut)
-	template_name = "blog/order.html"
+	template_name = "checkout.html"
+	context = {"obj":obj} 
+
+
+	return render(request,context,template_name)
+
+def OrderSummary(request):
 	try:
 		the_id = request.session['cart_id']
 	except:
 		the_id = None
 	if the_id:
 		cart = Cart.objects.get(id=the_id)
-		context = {"obj":obj,"cart":cart}
+		context = {"cart":cart}
 	else:
 		empty_message = "Your cart is empty!please keep shopping!"
-		context = {"obj":obj,"empty":True,"empty_message":empty_message} 
+		context = {"empty":True,"empty_message":empty_message}
 
-
-	return render(request,context,template_name)
-
+	template_name = "carts/checkout.html"
+	
+	return render(request,template_name,context)'''
 
 
