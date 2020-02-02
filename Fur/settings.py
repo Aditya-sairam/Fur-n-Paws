@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     #'phonenumber_field',
     'blog.apps.BlogConfig',
     'carts.apps.CartsConfig',
+    'cart.apps.CartConfig',
     'orders.apps.OrdersConfig',
     'comments.apps.CommentsConfig',
     'buyers.apps.BuyersConfig',

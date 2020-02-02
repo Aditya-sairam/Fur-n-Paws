@@ -16,11 +16,10 @@
                     <img src="{{ blog_post.image.url }}" class='card-img-top' />
             </a>
         {% endif %}
-        <form method='GET' action='{% url "update_cart" blog_post.slug %}'>
-            <input name='qty' type='number'/>
-            <input type='submit' value='add to cart'/>
-        </form>
-        <h5 class='card-title'>{{ blog_post.product_name }}<a href='{% url "update_cart" blog_post.slug   %}' class="pull-right"><br>Add to cart</a></h5>
+        
+
+        <a class="btn btn-success" href="{% url 'add_to_cart' object.id %}">Add to cart</a>
+        
         <p class='card-text'>
             <small class='text-muted'>{{ blog_post.publish_date }}</small>
             {% if truncate %}

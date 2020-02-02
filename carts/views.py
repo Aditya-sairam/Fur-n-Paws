@@ -11,10 +11,12 @@ from django.shortcuts import render,get_object_or_404,redirect
 def View(request):
 	try:
 		the_id = request.session['cart_id']
+		cart = Cart.objects.get(id=the_id)
+
 	except:
 		the_id = None
 	if the_id:
-		cart = Cart.objects.get(id=the_id)
+		the_id = request.session['cart_id']
 		context = {"cart":cart}
 	else:
 		empty_message = "Your cart is empty!please keep shopping!"
@@ -40,7 +42,7 @@ def View(request):
 
 
 
-def update_cart(request,slug):
+'''def update_cart(request,slug):
 	request.session.set_expiry(1200000)
 
 	try:
@@ -60,6 +62,7 @@ def update_cart(request,slug):
 		the_id = new_cart.id
 
 	cart = Cart.objects.get(id=the_id)
+
 
 	try:
 		product = BlogPost.objects.get(slug=slug)
@@ -98,7 +101,7 @@ def update_cart(request,slug):
 	return HttpResponseRedirect(reverse("cart")) 
 
 
-'''def CheckOut_View(request):
+def CheckOut_View(request):
 	template_name = "carts/order.html"
 	form = CheckOutForm(request.POST or None)
 	if form.is_valid():

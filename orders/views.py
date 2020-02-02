@@ -18,6 +18,7 @@ def checkout(request):
 		the_id = request.session['cart_id']
 		cart = Cart.objects.get(id=the_id)
 	except:
+		
 		the_id = None
 		return HttpResponseRedirect(reverse('cart'))
 
@@ -38,4 +39,4 @@ def checkout(request):
 
 	context = {}
 	template_name = "blog/blog_post_list.html"
-	return render(request,context,template_name)
+	return render(request,template_name,context)

@@ -8,3 +8,7 @@ class profile(models.Model):
 
 	def __str__(self):
 		return f'{self.user.username} profile'
+
+		
+	def post_save_profile_create(sender, instance, created, *args, **kwargs):
+		user_profile, created = Profile.objects.get_or_create(user=instance)
