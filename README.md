@@ -5,3 +5,5 @@ This project is about building a web application for the dog owners or those who
 Tech Stack-Backend:1)Django framework
            Frontend:2)HTML,CSS
            Database:3)sqlite3 
+
+![Screenshot (33)](https://user-images.githubusercontent.com/37501823/80780773-bf0a6300-8b8d-11ea-9e7e-7be0f789af31.png)
